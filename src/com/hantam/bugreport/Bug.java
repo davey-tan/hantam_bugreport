@@ -165,7 +165,33 @@ public class Bug {
     private String resolution;
 
     public void createBugReport() {
-        String sql = "";
+        String sql = "INSERT INTO `bug_report`(`tester`, `date_open`, `root_cause`, `severity`, `priority`, `summary`, `steps`, `isolation`, `state`, `owner`, `estimate_fix`, `phase_detected`, `phase_removed`, `date_close`, `resolution`) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        
+        try {
+            pstmt = conn.prepareStatement(sql);
+            
+            pstmt.setString(1, getTester());
+            pstmt.setString(2, getDateOpen());
+            pstmt.setString(3, getRootCause());
+            pstmt.setInt(4, getSeverity());
+            pstmt.setInt(5, getPriority());
+            pstmt.setString(6, getSummary());
+            pstmt.setString(7, getSteps());
+            pstmt.setString(8, getIsolation());
+            pstmt.setString(10, getState());
+            pstmt.setString(11, getOwner());
+            pstmt.setString(12, getEstimateFix());
+            pstmt.setString(13, getPhaseDetected());
+            pstmt.setString(14, getPhaseRemoved());
+            pstmt.setString(15, getDateClose());
+            pstmt.setString(15, getResolution());
+            
+            pstmt.execute();
+            pstmt.close();
+        }catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
 }
