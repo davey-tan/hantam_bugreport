@@ -12,19 +12,19 @@ package com.hantam.bugreport;
 public class Bug {
     
     private int id;
-    private int tester;
+    private String tester;
     private String dateOpen;
-    private int rootCause;
+    private String rootCause;
     private int severity;
     private int priority;
     private String summary;
     private String steps;
     private String isolation;
-    private int state;
-    private int owner;
+    private String state;
+    private String owner;
     private String estimateFix;
-    private int phaseDetected;
-    private int phaseRemoved;
+    private String phaseDetected;
+    private String phaseRemoved;
     private String dateClose;
     private String resolution;
     
