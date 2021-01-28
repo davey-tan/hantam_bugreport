@@ -18,6 +18,14 @@ public class Bug {
     Statement stmt;
     PreparedStatement pstmt;
     Connection conn = connect.connection();
+
+    public int getBugId() {
+        return bugId;
+    }
+
+    public void setBugId(int bugId) {
+        this.bugId = bugId;
+    }
     
     public String getTester() {
         return tester;
@@ -139,7 +147,7 @@ public class Bug {
         this.resolution = resolution;
     }
     
-    private int id;
+    private int bugId;
     private String tester;
     private String dateOpen;
     private String rootCause;
@@ -156,4 +164,8 @@ public class Bug {
     private String dateClose;
     private String resolution;
 
+    public void createBugReport() {
+        String sql = "";
+    }
+    
 }
