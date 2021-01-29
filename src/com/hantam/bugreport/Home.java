@@ -168,7 +168,7 @@ public class Home extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTableBug.getModel();
         model.setRowCount(0);
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * from bug_report");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * from bug_report WHERE NOT state='deleted'");
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 String a = rs.getString("id");
@@ -187,7 +187,7 @@ public class Home extends javax.swing.JFrame {
     }
     
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
-        // TODO add your handling code here:
+        new NewReport().setVisible(true);
     }//GEN-LAST:event_jButtonNewActionPerformed
 
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
