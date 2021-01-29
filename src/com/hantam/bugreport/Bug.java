@@ -179,12 +179,12 @@ public class Bug {
             pstmt.setString(6, getSummary());
             pstmt.setString(7, getSteps());
             pstmt.setString(8, getIsolation());
-            pstmt.setString(10, getState());
-            pstmt.setString(11, getOwner());
-            pstmt.setString(12, getEstimateFix());
-            pstmt.setString(13, getPhaseDetected());
-            pstmt.setString(14, getPhaseRemoved());
-            pstmt.setString(15, getDateClose());
+            pstmt.setString(9, getState());
+            pstmt.setString(10, getOwner());
+            pstmt.setString(11, getEstimateFix());
+            pstmt.setString(12, getPhaseDetected());
+            pstmt.setString(13, getPhaseRemoved());
+            pstmt.setString(14, getDateClose());
             pstmt.setString(15, getResolution());
             
             pstmt.execute();
