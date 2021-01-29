@@ -5,10 +5,14 @@
  */
 package com.hantam.bugreport;
 
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,6 +30,24 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         
         tableRefresh();
+        
+        jTableBug.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent mouseEvent) {
+                JTable table = (JTable) mouseEvent.getSource();
+                Point point = mouseEvent.getPoint();
+                int row = table.rowAtPoint(point);
+                final int column = 0;
+                if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1 && row != -1) {
+                    System.out.println("Selected row: " + row);
+                    String id = table.getValueAt(row, column).toString();
+                    System.out.println("id: " + id);
+                    DetailReport dtlreport = new DetailReport();
+                    dtlreport.DetailReport(id);
+                    dtlreport.setVisible(true);
+                }
+            }
+        });
+
     }
 
     /**
@@ -39,7 +61,6 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
-        jButtonDel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButtonRefresh = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -59,9 +80,6 @@ public class Home extends javax.swing.JFrame {
                 jButtonNewActionPerformed(evt);
             }
         });
-
-        jButtonDel.setText("Delete Report");
-        jButtonDel.setFocusPainted(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/hantam/bugreport/resources/hantam.png"))); // NOI18N
@@ -83,7 +101,6 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                     .addComponent(jButtonNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonDel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -94,10 +111,8 @@ public class Home extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jButtonNew, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonDel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jButtonRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 255));
@@ -118,14 +133,8 @@ public class Home extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableBug.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableBug);
-        if (jTableBug.getColumnModel().getColumnCount() > 0) {
-            jTableBug.getColumnModel().getColumn(0).setResizable(false);
-            jTableBug.getColumnModel().getColumn(1).setResizable(false);
-            jTableBug.getColumnModel().getColumn(2).setResizable(false);
-            jTableBug.getColumnModel().getColumn(3).setResizable(false);
-            jTableBug.getColumnModel().getColumn(4).setResizable(false);
-        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -180,6 +189,9 @@ public class Home extends javax.swing.JFrame {
                 String e = rs.getString("state");
                 model.addRow(new Object[]{a, b, c, d, e});
             }
+            
+            pstmt.close();
+            rs.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -230,7 +242,6 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonDel;
     private javax.swing.JButton jButtonNew;
     private javax.swing.JButton jButtonRefresh;
     private javax.swing.JLabel jLabel1;

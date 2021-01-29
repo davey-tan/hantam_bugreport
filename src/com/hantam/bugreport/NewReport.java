@@ -30,16 +30,16 @@ public class NewReport extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldId = new javax.swing.JTextField();
-        jTextFieldId1 = new javax.swing.JTextField();
+        jTextFieldTester = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         datePickerOpen = new com.github.lgooddatepicker.components.DatePicker();
         jLabel4 = new javax.swing.JLabel();
         jTextFieldRootCause = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        jSpinnerSever = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
+        jSpinnerPrior = new javax.swing.JSpinner();
         jLabel7 = new javax.swing.JLabel();
         jTextFieldSummary = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -62,8 +62,9 @@ public class NewReport extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jTextFieldResolution = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
+        jButtonSubmit = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Bug Reporter");
         setResizable(false);
 
@@ -74,8 +75,9 @@ public class NewReport extends javax.swing.JFrame {
         jLabel1.setText("Root Cause:");
 
         jTextFieldId.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jTextFieldId.setText("BUG_001");
 
-        jTextFieldId1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jTextFieldTester.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,15 +99,15 @@ public class NewReport extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Severity:");
 
-        jSpinner1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+        jSpinnerSever.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jSpinnerSever.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Priority:");
 
-        jSpinner2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+        jSpinnerPrior.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jSpinnerPrior.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,6 +138,7 @@ public class NewReport extends javax.swing.JFrame {
         jLabel10.setText("ID:");
 
         jTextFieldState.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jTextFieldState.setText("Open");
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -173,6 +176,14 @@ public class NewReport extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Resolution:");
 
+        jButtonSubmit.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jButtonSubmit.setText("SUBMIT");
+        jButtonSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSubmitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -186,9 +197,9 @@ public class NewReport extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jTextFieldRootCause, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSpinnerSever, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jSpinnerPrior, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,7 +213,7 @@ public class NewReport extends javax.swing.JFrame {
                                         .addComponent(jLabel6))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextFieldId1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldTester, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel2))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,6 +252,10 @@ public class NewReport extends javax.swing.JFrame {
                         .addComponent(jTextFieldResolution))
                     .addComponent(jLabel16))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,11 +272,11 @@ public class NewReport extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextFieldId1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldTester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(datePickerEstimate, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextFieldState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextFieldOwner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(datePickerEstimate, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldOwner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(datePickerOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,8 +291,8 @@ public class NewReport extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldRootCause, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSpinnerSever, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSpinnerPrior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextFieldPDetected, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextFieldPRemoved, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(datePickerClosed, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -297,7 +312,9 @@ public class NewReport extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonSubmit)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -314,6 +331,31 @@ public class NewReport extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
+        Bug bg = new Bug();
+        
+        bg.setBugId(jTextFieldId.getText());
+        bg.setTester(jTextFieldTester.getText());
+        bg.setDateOpen(datePickerOpen.getText());
+        bg.setRootCause(jTextFieldRootCause.getText());
+        bg.setSeverity(Integer.parseInt(jSpinnerSever.getValue().toString()));
+        bg.setPriority(Integer.parseInt(jSpinnerPrior.getValue().toString()));
+        bg.setSummary(jTextFieldSummary.getText());
+        bg.setSteps(jTextAreaSteps.getText());
+        bg.setIsolation(jTextAreaIsolation.getText());
+        bg.setState(jTextFieldState.getText());
+        bg.setOwner(jTextFieldOwner.getText());
+        bg.setEstimateFix(datePickerEstimate.getText());
+        bg.setPhaseDetected(jTextFieldPDetected.getText());
+        bg.setPhaseRemoved(jTextFieldPRemoved.getText());
+        bg.setDateClose(datePickerClosed.getText());
+        bg.setResolution(jTextFieldResolution.getText());
+        
+        bg.createBugReport();
+        
+        this.dispose();
+    }//GEN-LAST:event_jButtonSubmitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -355,6 +397,7 @@ public class NewReport extends javax.swing.JFrame {
     private com.github.lgooddatepicker.components.DatePicker datePickerClosed;
     private com.github.lgooddatepicker.components.DatePicker datePickerEstimate;
     private com.github.lgooddatepicker.components.DatePicker datePickerOpen;
+    private javax.swing.JButton jButtonSubmit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -374,12 +417,11 @@ public class NewReport extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JSpinner jSpinnerPrior;
+    private javax.swing.JSpinner jSpinnerSever;
     private javax.swing.JTextArea jTextAreaIsolation;
     private javax.swing.JTextArea jTextAreaSteps;
     private javax.swing.JTextField jTextFieldId;
-    private javax.swing.JTextField jTextFieldId1;
     private javax.swing.JTextField jTextFieldOwner;
     private javax.swing.JTextField jTextFieldPDetected;
     private javax.swing.JTextField jTextFieldPRemoved;
@@ -387,5 +429,6 @@ public class NewReport extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldRootCause;
     private javax.swing.JTextField jTextFieldState;
     private javax.swing.JTextField jTextFieldSummary;
+    private javax.swing.JTextField jTextFieldTester;
     // End of variables declaration//GEN-END:variables
 }
