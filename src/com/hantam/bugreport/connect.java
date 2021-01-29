@@ -20,7 +20,7 @@ public class connect {
 
     public static Connection connection() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hantam_bugreport?user=root");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hantam_bugreport", "root", "");
             System.out.println("Connection success");
         } catch (Exception ex) {
             Logger.getLogger(connect.class.getName()).log(Level.SEVERE, null, ex);
