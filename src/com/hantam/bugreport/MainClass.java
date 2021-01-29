@@ -16,7 +16,7 @@ public class MainClass {
      */
     public static void main(String[] args) {
         
-        new NewReport().setVisible(true);
+        new Home().setVisible(true);
     }
     
 }
